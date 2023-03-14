@@ -1,76 +1,31 @@
-import {nanoid} from 'nanoid';
 import Head from 'next/head';
-import {useState} from 'react';
-
-import Button from '../components/Button';
-import Layout from '../components/Layout';
-import useFetch from '../hooks/useFetch';
-import useStore from '../hooks/useStore';
+import Link from 'next/link';
 
 export default function HomePage() {
-	// Data
-	const {data, loading, error} = useFetch('/api/hello');
-
-	// Local state
-	const [id, setId] = useState(null);
-
-	// Global state
-	const counter = useStore(state => state.counter);
-	const decrementCounter = useStore(state => state.decrementCounter);
-	const incrementCounter = useStore(state => state.incrementCounter);
-	const setCounter = useStore(state => state.setCounter);
-
 	return (
-		<Layout>
+		<>
 			<Head>
-				<title key="title">My Project</title>
-				<meta key="description" name="description" content="This is my project" />
+				<title key="title">Library App</title>
+				<meta key="description" name="description" content="This is my library" />
 			</Head>
-			<h1>Home</h1>
-			{loading && <div>Loading...</div>}
-			{error && <div>{error.message}</div>}
-			{data && (
-				<pre>
-					<code>{JSON.stringify(data, null, 4)}</code>
-				</pre>
-			)}
-			<section>
-				<Button
-					aria-label="decrement"
-					onClick={() => {
-						decrementCounter();
-					}}
-				>
-					-
-				</Button>
-				<input
-					value={`${counter}`}
-					size={2}
-					onChange={event => {
-						setCounter(Number.parseInt(event.target.value, 10));
-					}}
-				/>
-				<Button
-					aria-label="increment"
-					onClick={() => {
-						incrementCounter();
-					}}
-				>
-					+
-				</Button>
+			<h1>Library</h1>
+			<section className="home">
+				<Link href="/#">Explore</Link>
+				<Link href="/sign-in">Sign in</Link>
+				<Link href="/log-in">Log in</Link>
 			</section>
-			<br />
-			<section>
-				<Button
-					onClick={() => {
-						setId(nanoid());
-					}}
-				>
-					Generate ID
-				</Button>
-				<br />
-				<div>Id: {id}</div>
-			</section>
-		</Layout>
+			<p>
+				Donec ut sem a est imperdiet tempus. Duis euismod viverra eros, sed fringilla urna
+				iaculis sed. Donec at dolor non sapien ullamcorper semper. Phasellus vitae urna id
+				lectus mattis tincidunt suscipit auctor risus. Integer ullamcorper aliquam elit, vel
+				consequat felis fringilla nec. Praesent laoreet scelerisque mauris nec ultricies.
+				Duis turpis enim, ullamcorper vel bibendum id, efficitur at turpis. Nunc dictum,
+				purus in sagittis scelerisque, mauris augue dignissim sem, nec fermentum ipsum
+				lectus ac sapien. Quisque venenatis leo nisi, quis tempor ligula pretium at.
+				Vestibulum efficitur lectus id quam dapibus, ut condimentum augue placerat.
+				Pellentesque elementum, est ac vestibulum sodales, urna justo sollicitudin purus,
+				vitae suscipit felis ante venenatis magna.
+			</p>
+		</>
 	);
 }
