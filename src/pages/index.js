@@ -10,9 +10,15 @@ export default function HomePage() {
 			</Head>
 			<h1>Library</h1>
 			<section className="home">
-				<Link href="/#">Explore</Link>
-				<Link href="/sign-in">Sign in</Link>
-				<Link href="/log-in">Log in</Link>
+				<Link href="/#">
+					<button type="button">Explore</button>
+				</Link>
+				<Link href="/sign-in">
+					<button type="button">Sign in</button>
+				</Link>
+				<Link href="/log-in">
+					<button type="button">Log in</button>
+				</Link>
 			</section>
 			<p>
 				Donec ut sem a est imperdiet tempus. Duis euismod viverra eros, sed fringilla urna
