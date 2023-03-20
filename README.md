@@ -1,144 +1,38 @@
-# Next.js App
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This is a template for [Next.js](https://nextjs.org/) with additional tools.
+## Getting Started
 
-<!-- toc -->
-
--   [Tech-Stack](#tech-stack)
--   [Project Setup](#project-setup)
-    -   [Set up Vercel](#set-up-vercel)
-        -   [App](#app)
-        -   [Storybook](#storybook)
-    -   [Set up formatter](#set-up-formatter)
--   [Getting started](#getting-started)
--   [Test Driven Development](#test-driven-development)
--   [Commands](#commands)
-
-<!-- tocstop -->
-
-It uses the following tools/libraries:
-
-## Tech-Stack
-
--   [Next.js](https://nextjs.org/)
--   [Storybook](https://storybook.js.org/)
--   [Jest](https://jestjs.io/)
--   [Testing Library](https://testing-library.com/)
--   [Stylelint](https://stylelint.io/)
--   [Eslint](https://eslint.org/)
--   [Prettier](https://prettier.io/)
--   [Husky](https://typicode.github.io/husky/)
--   [Zustand](https://zustand-demo.pmnd.rs/)
-
-## Project Setup
-
-This project uses multiple Vercel deployments to make design/code reviews easier:
-
--   App Production
--   App Preview
--   Storybook Production
--   Storybook Preview
-
-### Set up Vercel
-
-Please follow this guide: https://vercel.com/docs/concepts/git
-
-#### App
-
-1.Follow the default setup for Next.js.
-
-#### Storybook
-
-1. Adjust the "Build and Output Settings"
-    - BUILD COMMAND: `npm run storybook:build`
-    - OUTPUT DIRECTORY: `./storybook-static`
-
-<p align="center"><img src="docs/resources/vercel-storybook.png" alt="Vercel Storybook settings" width="600"/></p>
-
-### Set up formatter
-
-Please adjust your formatter for this project. We enabled several eslint rules, therefore we need to
-use eslint as the default formatter.
-
-Add these lines to your `settings.json`. We already added some settings in
-[.vscode/settings.json](.vscode/settings.json).
-
-```json
-{
-	"[javascript]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
-	},
-	"[javascriptreact]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
-	}
-}
-```
-
-## Getting started
-
-**Run the development server:**
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-**Run storybook:**
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```shell
-npm run storybook
-```
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Test Driven Development
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-We use jest to write unit tests. Please look at the Documentation for [Jest](https://jestjs.io/) and
-[testing-library](https://testing-library.com/docs/react-testing-library/intro/).
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Commands
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-**Run the development server:**
+## Learn More
 
-```bash
-npm run dev
-```
+To learn more about Next.js, take a look at the following resources:
 
-**Build:**
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-```shell
-npm run build
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-**Run storybook:**
+## Deploy on Vercel
 
-```shell
-npm run storybook
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-**Build storybook:**
-
-```shell
-npm run storybook:build
-```
-
-**Run all tests:**
-
-```shell
-npm run test
-```
-
-**Run stylelint**
-
-```shell
-npm run stylelint
-```
-
-**Run eslint**
-
-```shell
-npm run eslint
-```
-
-**Run all linters**
-
-```shell
-npm run lint
-```
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

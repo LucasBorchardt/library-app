@@ -1,7 +1,7 @@
 export default function Footer() {
 	return (
 		<footer>
-			<div>© 2022 by Me</div>
+			<div>© 2023 by Me</div>
 		</footer>
 	);
 }
