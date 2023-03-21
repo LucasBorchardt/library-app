@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -32,7 +33,7 @@ export default function Dropdown() {
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/"
                   className={classNames(
                     active ? "bg-gray-800 text-gray-200" : "text-gray-200",
@@ -40,12 +41,12 @@ export default function Dropdown() {
                   )}
                 >
                   Home
-                </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/author"
                   className={classNames(
                     active ? "bg-gray-800 text-gray-200" : "text-gray-200",
@@ -53,12 +54,12 @@ export default function Dropdown() {
                   )}
                 >
                   Author
-                </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/genre"
                   className={classNames(
                     active ? "bg-gray-800 text-gray-200" : "text-gray-200",
@@ -66,12 +67,12 @@ export default function Dropdown() {
                   )}
                 >
                   Genre
-                </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/year"
                   className={classNames(
                     active ? "bg-gray-800 text-gray-200" : "text-gray-200",
@@ -79,12 +80,12 @@ export default function Dropdown() {
                   )}
                 >
                   Year
-                </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/publisher"
                   className={classNames(
                     active ? "bg-gray-800 text-gray-200" : "text-gray-200",
@@ -92,7 +93,7 @@ export default function Dropdown() {
                   )}
                 >
                   Publisher
-                </a>
+                </Link>
               )}
             </Menu.Item>
           </div>
