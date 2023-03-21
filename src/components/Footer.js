@@ -1,7 +1,7 @@
 export default function Footer() {
 	return (
-		<footer>
-			<div>© 2023 by Me</div>
+		<footer className="bg-gray-900 shadow-md mb-0">
+			<div className="text-gray-200 text-right mr-5">© 2023 by Me</div>
 		</footer>
 	);
 }
