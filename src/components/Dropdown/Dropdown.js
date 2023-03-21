@@ -47,6 +47,19 @@ export default function Dropdown() {
             <Menu.Item>
               {({ active }) => (
                 <Link
+                  href="/title"
+                  className={classNames(
+                    active ? "bg-gray-800 text-gray-200" : "text-gray-200",
+                    "block px-4 py-2 text-sm"
+                  )}
+                >
+                  Title
+                </Link>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <Link
                   href="/author"
                   className={classNames(
                     active ? "bg-gray-800 text-gray-200" : "text-gray-200",
@@ -82,20 +95,7 @@ export default function Dropdown() {
                   Year
                 </Link>
               )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <Link
-                  href="/publisher"
-                  className={classNames(
-                    active ? "bg-gray-800 text-gray-200" : "text-gray-200",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  Publisher
-                </Link>
-              )}
-            </Menu.Item>
+            </Menu.Item>            
           </div>
         </Menu.Items>
       </Transition>
