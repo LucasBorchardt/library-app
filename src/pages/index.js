@@ -1,76 +1,42 @@
-import {nanoid} from 'nanoid';
-import Head from 'next/head';
-import {useState} from 'react';
+import Head from "next/head";
 
-import Button from '../components/Button';
-import Layout from '../components/Layout';
-import useFetch from '../hooks/useFetch';
-import useStore from '../hooks/useStore';
+import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
 
 export default function HomePage() {
-	// Data
-	const {data, loading, error} = useFetch('/api/hello');
-
-	// Local state
-	const [id, setId] = useState(null);
-
-	// Global state
-	const counter = useStore(state => state.counter);
-	const decrementCounter = useStore(state => state.decrementCounter);
-	const incrementCounter = useStore(state => state.incrementCounter);
-	const setCounter = useStore(state => state.setCounter);
-
-	return (
-		<Layout>
-			<Head>
-				<title key="title">My Project</title>
-				<meta key="description" name="description" content="This is my project" />
-			</Head>
-			<h1>Home</h1>
-			{loading && <div>Loading...</div>}
-			{error && <div>{error.message}</div>}
-			{data && (
-				<pre>
-					<code>{JSON.stringify(data, null, 4)}</code>
-				</pre>
-			)}
-			<section>
-				<Button
-					aria-label="decrement"
-					onClick={() => {
-						decrementCounter();
-					}}
-				>
-					-
-				</Button>
-				<input
-					value={`${counter}`}
-					size={2}
-					onChange={event => {
-						setCounter(Number.parseInt(event.target.value, 10));
-					}}
-				/>
-				<Button
-					aria-label="increment"
-					onClick={() => {
-						incrementCounter();
-					}}
-				>
-					+
-				</Button>
-			</section>
-			<br />
-			<section>
-				<Button
-					onClick={() => {
-						setId(nanoid());
-					}}
-				>
-					Generate ID
-				</Button>
-				<br />
-				<div>Id: {id}</div>
-			</section>
-		</Layout>
-	);
+  return (
+    <>
+      <Head>
+        <title key="title">Library App</title>
+        <meta
+          key="description"
+          name="description"
+          content="This is my library"
+        />
+      </Head>
+      <Header />
+      <div class="max-w-sm w-full sm:max-w-full sm:flex">
+        <div class="border-r border-b border-l border-gray-400 sm:border-l-0 sm:border-t sm:border-gray-400 bg-white rounded-b sm:rounded-b-none sm:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div class="mb-8 ">
+            <p class="text-gray-700 text-base">
+              Donec ut sem a est imperdiet tempus. Duis euismod viverra eros,
+              sed fringilla urna iaculis sed. Donec at dolor non sapien
+              ullamcorper semper. Phasellus vitae urna id lectus mattis
+              tincidunt suscipit auctor risus. Integer ullamcorper aliquam elit,
+              vel consequat felis fringilla nec. Praesent laoreet scelerisque
+              mauris nec ultricies. Duis turpis enim, ullamcorper vel bibendum
+              id, efficitur at turpis. Nunc dictum, purus in sagittis
+              scelerisque, mauris augue dignissim sem, nec fermentum ipsum
+              lectus ac sapien. Quisque venenatis leo nisi, quis tempor ligula
+              pretium at. Vestibulum efficitur lectus id quam dapibus, ut
+              condimentum augue placerat. Pellentesque elementum, est ac
+              vestibulum sodales, urna justo sollicitudin purus, vitae suscipit
+              felis ante venenatis magna.
+            </p>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
 }
