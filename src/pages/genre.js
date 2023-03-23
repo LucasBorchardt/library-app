@@ -39,8 +39,8 @@ export default function GenrePage() {
         <div className="flow-root">
           <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {books.map((a) => (
-              <li>
-                <Link key="iterator" href={`/books/${a._id}`}>{a.genre}</Link>
+              <li key={genre}>
+                <Link href={`/books/${a._id}`}>{a.genre}</Link>
                 <br />
               </li>
             ))}

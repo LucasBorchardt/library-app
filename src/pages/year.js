@@ -39,8 +39,8 @@ export default function YearPage() {
         <div className="flow-root">
           <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {books.map((a) => (
-              <li>
-                <Link key="iterator" href={`/books/${a._id}`}>{a.year}</Link>
+              <li key={year}>
+                <Link href={`/books/${a._id}`}>{a.year}</Link>
                 <br />
               </li>
             ))}

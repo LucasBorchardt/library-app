@@ -39,8 +39,8 @@ export default function AuthorPage() {
         <div className="flow-root">
           <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {books.map((a) => (
-              <li>
-                <Link key="iterator" href={`/books/${a._id}`}>{a.author}</Link>
+              <li key={author}>
+                <Link href={`/books/${a._id}`}>{a.author}</Link>
                 <br />
               </li>
             ))}
