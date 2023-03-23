@@ -30,17 +30,17 @@ export default function YearPage() {
         <title key="title">Year</title>
         <meta key="description" name="description" content="Title" />
       </Head>
-      <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex items-center justify-between mb-4">
-          <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
+      <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex items-center justify-between mb-4">
+          <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
             Search by Year
           </h5>
         </div>
-        <div class="flow-root">
-          <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="flow-root">
+          <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {books.map((a) => (
               <li>
-                <Link href={`/books/${a._id}`}>{a.year}</Link>
+                <Link key="iterator" href={`/books/${a._id}`}>{a.year}</Link>
                 <br />
               </li>
             ))}
