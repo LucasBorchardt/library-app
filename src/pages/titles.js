@@ -40,7 +40,7 @@ export default function TitlePage() {
         <div className="flow-root">
           <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
             {books.map((a) => (
-              <li key={title}>
+              <li key={a.title}>
                 <Link href={`/books/${a._id}`}>{a.title}</Link>
                 <br />
               </li>
