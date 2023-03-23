@@ -10,6 +10,6 @@ const bookSchema = new Schema({
 	synopsis: {type: String, required: true},
 });
 
-const Book = mongoose.models.Books || mongoose.model('Books', bookSchema);
+const Book = mongoose.models.Book || mongoose.model('Book', bookSchema);
 
 export default Book;
