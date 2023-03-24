@@ -6,10 +6,10 @@ export default function SignInPage() {
 	return (
 		<Layout>
 			<Head>
-				<title key="title">Sign In</title>
-				<meta key="description" name="description" content="Sign in" />
+				<title key="title">Sign Up</title>
+				<meta key="description" name="description" content="Sign Up" />
 			</Head>
-			<h1>Sign In</h1>
+			<h1>Sign Up</h1>
 		</Layout>
 	);
 }

@@ -10,11 +10,11 @@ export default function Header() {
       </div>
       <div className="flex justify-around items-center text-gray-200 px-4 shadow-md sm:py-4 sm:justify-around">
         <Dropdown />
-        <Link href="/signIn">
-          <button type="button">Sign in</button>
+        <Link href="/signUp">
+          <button type="button">Sign Up</button>
         </Link>
         <Link href="/logIn">
-          <button type="button">Log in</button>
+          <button type="button">Log In</button>
         </Link>
       </div>
     </header>

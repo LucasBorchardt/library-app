@@ -30,14 +30,17 @@ export default function GenrePage() {
         <title key="title">Genres</title>
         <meta key="description" name="description" content="Title" />
       </Head>
-	  <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex items-center justify-between mb-4">
           <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
             Search by Genre
           </h5>
         </div>
         <div className="flow-root">
-          <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
+          <ul
+            role="list"
+            className="divide-y divide-gray-200 dark:divide-gray-700"
+          >
             {books.map((a) => (
               <li key={a.genre}>
                 <Link href={`/books/${a._id}`}>{a.genre}</Link>
