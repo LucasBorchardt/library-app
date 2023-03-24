@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Dropdown from "../Dropdown/Dropdown";
+import Dropdown from "./Dropdown";
 
 export default function Header() {
   return (

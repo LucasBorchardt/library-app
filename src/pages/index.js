@@ -1,9 +1,10 @@
 import Head from "next/head";
-
 import Footer from "../components/Footer";
-import Header from "../components/Header/Header";
+import Header from "../components/Header";
 
 export default function HomePage() {
+  
+  
   return (
     <>
       <Head>
@@ -15,10 +16,10 @@ export default function HomePage() {
         />
       </Head>
       <Header />
-      <div class="max-w-sm w-full sm:max-w-full sm:flex">
-        <div class="border-r border-b border-l border-gray-400 sm:border-l-0 sm:border-t sm:border-gray-400 bg-white rounded-b sm:rounded-b-none sm:rounded-r p-4 flex flex-col justify-between leading-normal">
-          <div class="mb-8 ">
-            <p class="text-gray-700 text-base">
+      <div className="max-w-sm w-full sm:max-w-full sm:flex">
+        <div className="border-r border-b border-l border-gray-400 sm:border-l-0 sm:border-t sm:border-gray-400 bg-white rounded-b sm:rounded-b-none sm:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div className="mb-8 ">
+            <p className="text-gray-700 text-base">
               Donec ut sem a est imperdiet tempus. Duis euismod viverra eros,
               sed fringilla urna iaculis sed. Donec at dolor non sapien
               ullamcorper semper. Phasellus vitae urna id lectus mattis
