@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
@@ -26,10 +25,6 @@ export default function GenrePage() {
 
   return (
     <Layout>
-      <Head>
-        <title key="title">Genres</title>
-        <meta key="description" name="description" content="Title" />
-      </Head>
       <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex items-center justify-between mb-4">
           <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">

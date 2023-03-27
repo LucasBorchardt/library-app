@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Dropdown from "./Dropdown";
+import Login from "./Login";
 
 export default function Header() {
   return (
@@ -10,12 +10,7 @@ export default function Header() {
       </div>
       <div className="flex justify-around items-center text-gray-200 px-4 shadow-md sm:py-4 sm:justify-around">
         <Dropdown />
-        <Link href="/signUp">
-          <button type="button">Sign Up</button>
-        </Link>
-        <Link href="/logIn">
-          <button type="button">Log In</button>
-        </Link>
+        <Login />
       </div>
     </header>
   );
