@@ -34,7 +34,7 @@ export default function TitlePage() {
         <div className="flow-root">
           <ul
             role="list"
-            className="divide-y divide-gray-200 dark:divide-gray-700"
+            className="divide-y divide-gray-700 dark:text-white"
           >
             {books.map((a) => (
               <li key={a.title}>

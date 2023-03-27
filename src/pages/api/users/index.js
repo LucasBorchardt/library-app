@@ -1,11 +1,11 @@
-import Book from "@/backend/models/Book";
 import dbConnect from "@/backend/connect";
+import User from "@/backend/models/User";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const books = await Book.find();
-    return response.status(200).json(books);
+    const users = await User.find();
+    return response.status(200).json(users);
   }
 }

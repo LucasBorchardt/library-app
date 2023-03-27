@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Layout from "../components/Layout";
+import Layout from "@/components/Layout";
 
 export default function AuthorPage() {
   const [books, setBooks] = useState(null);
@@ -34,7 +34,7 @@ export default function AuthorPage() {
         <div className="flow-root">
           <ul
             role="list"
-            className="divide-y divide-gray-200 dark:divide-gray-700"
+            className="divide-y divide-gray-700 dark:text-white"
           >
             {books.map((a) => (
               <li key={a.author}>
