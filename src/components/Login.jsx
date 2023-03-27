@@ -7,21 +7,21 @@ export default function Login() {
 
   if (session) {
     return (
-      <div >
-        <p>Welcome {session.user.name}</p>
-        <Link href={`/userPage/${session.user.id}`}>
+      <>
+        <Link href={`/userPage/${session.user.id}`} >
           <img
             src={session.user.image}
             style={{ borderRadius: "50px", height: "35px", width: "35px" }}
           ></img>
         </Link>
-        <br></br>        
-      </div>
+        <br></br>
+        <Link href="/" onClick={() => signOut()}>Sign out</Link>
+      </>
     );
   }
   return (
     <>
-      <a onClick={() => signIn()}>Sign in</a>
+      <Link href="/userPage" onClick={() => signIn()}>Sign in</Link>
     </>
   );
 }
