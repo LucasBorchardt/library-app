@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Layout from "@/components/Layout";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -28,10 +27,6 @@ export default function BookDetailsPage() {
   if (!books) return <p>No profile data</p>;
   return (
     <Layout>
-      <Head>
-        <title key="title">Titles</title>
-        <meta key="description" name="description" content="Title" />
-      </Head>
       <Book
         id={books.id}
         title={books.title}

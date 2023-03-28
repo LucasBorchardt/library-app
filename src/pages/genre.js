@@ -10,7 +10,7 @@ export default function GenrePage() {
     async function getBooks() {
       try {
         setLoading(true);
-        const booksData = await fetch("/api/books/");
+        const booksData = await fetch("/api/books");
         const books = await booksData.json();
         setBooks(books);
         setLoading(false);
