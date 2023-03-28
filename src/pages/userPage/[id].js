@@ -9,7 +9,6 @@ export default function UserPage() {
   const [books, setBooks] = useState([]);
   const [user, setUser] = useState();
   const router = useRouter();
-  // const [isLoading, setLoading] = useState(false);
   const { id } = router.query;
 
   useEffect(() => {
@@ -30,8 +29,6 @@ export default function UserPage() {
     }
     getBooks();
   }, [id]);
-  // if (isLoading) return <p>Loading...</p>;
-  // if (!books) return <p>No profile data</p>;
 
   useEffect(() => {
     async function getUser() {
@@ -50,7 +47,7 @@ export default function UserPage() {
     return (
       <Layout>
         <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-900 dark:border-gray-700">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-1">
             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
               Your Books
             </h5>
