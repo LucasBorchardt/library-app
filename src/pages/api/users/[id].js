@@ -5,7 +5,6 @@ export default async function handler(request, response) {
   await dbConnect();
 
   const { id } = request.query;
-
   if (request.method === "GET") {
     const user = await User.findById(id);
     if (!user) {

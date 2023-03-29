@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Book from "@/components/Book";
 
 export default function BookDetailsPage() {
-  const [books, setBooks] = useState(null);
+  const [book, setBook] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
   const { id } = router.query;
@@ -13,9 +13,9 @@ export default function BookDetailsPage() {
     async function getBooks() {
       try {
         setLoading(true);
-        const booksData = await fetch(`/api/books/${id}`);
-        const books = await booksData.json();
-        setBooks(books);
+        const bookData = await fetch(`/api/books/${id}`);
+        const book = await bookData.json();
+        setBook(book);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -23,17 +23,28 @@ export default function BookDetailsPage() {
     }
     getBooks();
   }, [id]);
+
+  async function handleDeleteBook() {
+    await fetch(`/api/books/${id}`, {
+      method: "DELETE",
+    });
+    router.push("/");
+  }
+
+  if (!book) {
+    return console.log("error");
+  }
   if (isLoading) return <p>Loading...</p>;
-  if (!books) return <p>No profile data</p>;
+  if (!book) return <p>No profile data</p>;
   return (
     <Layout>
       <Book
-        id={books.id}
-        title={books.title}
-        author={books.author}
-        genre={books.genre}
-        year={books.year}
-        synopsis={books.synopsis}
+        id={book.id}
+        title={book.title}
+        author={book.author}
+        genre={book.genre}
+        year={book.year}
+        synopsis={book.synopsis}
       />
     </Layout>
   );

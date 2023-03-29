@@ -1,43 +1,33 @@
-import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import useSWR from "swr";
+import { useState } from "react";
 
-export default function NewBookForm() {
-  const { data: session } = useSession();
+export default function EditForm({ book }) {
   const router = useRouter();
-  const books = useSWR("/api/books");
-  console.log("SESSION", session);
-  async function handleSubmit(event) {
-    event.preventDefault();
+  const [editBook, setEditBook] = useState(book);
 
-    const data = new FormData(event.target);
-    const formData = Object.fromEntries(data);
-    const response = await fetch("/api/books", {
-      method: "POST",
+  async function handleEdit() {
+    
+    const response = await fetch(`/api/books/${editBook._id}`, {
+      method: "PUT",
+      body: JSON.stringify({ ...editBook }),
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        ...formData,
-        user: session.user.name,
-        userId: session.user.id,
-      }),
     });
-
-    if (Response.ok) {
-      const book = await response.json();
-      books.mutate();
+    if (response.ok) {
+      await response.json();
       router.push(`/books/${book._id}`);
     } else {
-      console.log(`Error: ${response.status}`);
+      console.error(`Error: ${response.status}`);
     }
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleEdit}>
       <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
-        <p className="text-white">Add a new book</p>
+        <p className="text-white">Edit your Book</p>
         <input
+          onChange={(e) => setEditBook({ ...editBook, title: e.target.value })}
+          value={editBook.title}
           type="text"
           name="title"
           id="title"
@@ -46,6 +36,8 @@ export default function NewBookForm() {
           placeholder="Title:"
         />
         <input
+          onChange={(e) => setEditBook({ ...editBook, author: e.target.value })}
+          value={editBook.author}
           type="text"
           name="author"
           id="author"
@@ -54,6 +46,8 @@ export default function NewBookForm() {
           placeholder="Author:"
         />
         <input
+          onChange={(e) => setEditBook({ ...editBook, genre: e.target.value })}
+          value={editBook.genre}
           type="text"
           name="genre"
           id="genre"
@@ -62,6 +56,8 @@ export default function NewBookForm() {
           placeholder="Genre:"
         />
         <input
+          onChange={(e) => setEditBook({ ...editBook, year: e.target.value })}
+          value={editBook.year}
           type="number"
           name="year"
           id="year"
@@ -70,6 +66,10 @@ export default function NewBookForm() {
           placeholder="Year:"
         />
         <textarea
+          onChange={(e) =>
+            setEditBook({ ...editBook, synopsis: e.target.value })
+          }
+          value={editBook.synopsis}
           id="synopsis"
           name="synopsis"
           rows="3"
@@ -77,19 +77,18 @@ export default function NewBookForm() {
           placeholder="Synopsis:"
         />
         <div className="inline-flex w-full justify-between gap-x-1.5 rounded-md sm:py-2">
-          <Link
+          {/* <Link
             href={`/userPage/${session.user.id}`}
             type="back"
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Back
-          </Link>
-
+          </Link> */}
           <button
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="submit"
           >
-            Submit
+            Update
           </button>
         </div>
       </div>

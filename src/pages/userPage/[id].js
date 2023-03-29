@@ -10,12 +10,13 @@ export default function UserPage() {
   const [user, setUser] = useState();
   const router = useRouter();
   const { id } = router.query;
-
   useEffect(() => {
     async function getBooks() {
       try {
         const booksData = await fetch("/api/books");
         const books = await booksData.json();
+        console.log("BOOKS", books);
+        console.log(id, books[books.length - 1]);
 
         const filteredBooks = books.filter((book) => {
           if (id === book.userId) {
@@ -58,11 +59,11 @@ export default function UserPage() {
               className="divide-y divide-gray-900 dark:text-white"
             >
               {books.map((a) => (
-              <li key={a.title}>
-                <Link href={`/books/${a._id}`}>{a.title}</Link>
-                <br />
-              </li>
-            ))}
+                <li key={a.title}>
+                  <Link href={`/books/${a._id}`}>{a.title}</Link>
+                  <br />
+                </li>
+              ))}
             </ul>
           </div>
         </div>

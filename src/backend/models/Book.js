@@ -8,6 +8,8 @@ const bookSchema = new Schema({
   genre: { type: String },
   year: { type: String },
   synopsis: { type: String, required: true },
+  user: { type: String },
+  userId: { type: String },
 });
 
 const Book = mongoose.models.Book || mongoose.model("Book", bookSchema);
