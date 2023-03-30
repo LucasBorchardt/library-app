@@ -7,7 +7,6 @@ export default function NewBookForm() {
   const { data: session } = useSession();
   const router = useRouter();
   const books = useSWR("/api/books");
-  console.log("SESSION", session);
   async function handleSubmit(event) {
     event.preventDefault();
 

@@ -15,8 +15,6 @@ export default function UserPage() {
       try {
         const booksData = await fetch("/api/books");
         const books = await booksData.json();
-        console.log("BOOKS", books);
-        console.log(id, books[books.length - 1]);
 
         const filteredBooks = books.filter((book) => {
           if (id === book.userId) {

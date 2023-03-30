@@ -45,6 +45,7 @@ export default function BookDetailsPage() {
         genre={book.genre}
         year={book.year}
         synopsis={book.synopsis}
+        onDelete={book.handleDeleteBook}
       />
     </Layout>
   );
