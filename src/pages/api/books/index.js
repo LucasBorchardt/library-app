@@ -11,7 +11,7 @@ export default async function handler(request, response) {
   if (request.method === "POST") {
     try {
         const booksData = request.body;
-        console.log(request.body)
+
         const book = new Book(booksData);
         const createdBook = await book.save();
         return response.status(201).json(createdBook);

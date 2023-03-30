@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function Book({
-  
+  _id,
   title,
   author,
   genre,
@@ -10,7 +10,8 @@ export default function Book({
   session,
   userId,
   onDelete,
-}) {
+  thisBook,
+}) { console.log("111111111", thisBook)
   return (
     <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -45,7 +46,7 @@ export default function Book({
         {session?.user.id === userId ? (
           <>
             <Link
-              href="/edit"
+              href={`/books/edit/${_id}`}
               type="edit"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >

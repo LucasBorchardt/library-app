@@ -13,7 +13,8 @@ export default async function handler(request, response) {
     response.status(200).json(book);
   }
   if (request.method === 'PUT') {
-		const book = await Book.findByIdAndUpdate(id, {$set: request.body});
+		// const book = await Book.findByIdAndUpdate(id,  request.body);
+    console.log("llllllllll", request.body)
 
 		return response.status(200).json({status: 'Book updated', book});
 	}

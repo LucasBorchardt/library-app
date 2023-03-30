@@ -1,31 +1,29 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function EditForm({id, title, author, genre, year, synopsis }) {
+export default function EditForm({ _id, title, author, genre, year, synopsis }) {
   const router = useRouter();
+  const { id } = router.query;
   const [editBook, setEditBook] = useState({
-    id,
+    _id,
     title,
     author,
     genre,
     year,
     synopsis,
   });
-  
-  async function handleEdit(event){
-    event.preventDefault()
-    console.log("11111111111", editBook);
+  async function handleEdit(event) {
+    event.preventDefault();
     const response = await fetch(`/api/books/${id}`, {
       method: "PUT",
-      body: JSON.stringify({ editBook }),
+      body: JSON.stringify( editBook ),
       headers: {
         "Content-Type": "application/json",
       },
-      
     });
     if (response.ok) {
       await response.json();
-      router.push(`/books/${book._id}`);
+      router.push(`/books/${_id}`);
     } else {
       console.error(`Error: ${response.status}`);
     }

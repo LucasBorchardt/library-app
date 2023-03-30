@@ -39,7 +39,8 @@ export default function BookDetailsPage() {
   return (
     <Layout>
       <Book
-        id={book.id}
+        _id={book._id}
+        thisBook={book}
         title={book.title}
         author={book.author}
         genre={book.genre}
