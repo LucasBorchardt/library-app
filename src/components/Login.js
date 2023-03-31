@@ -22,7 +22,7 @@ export default function Login() {
   }
   return (
     <>
-      <Link href="/userPage" onClick={() => signIn()}>
+      <Link href="/userPage/books" onClick={() => signIn()}>
         Sign in
       </Link>
     </>

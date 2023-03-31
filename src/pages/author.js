@@ -32,10 +32,7 @@ export default function AuthorPage() {
           </h5>
         </div>
         <div className="flow-root">
-          <ul
-            role="list"
-            className="divide-y divide-gray-700 dark:text-white"
-          >
+          <ul role="list" className="divide-y divide-gray-700 dark:text-white">
             {books.map((a) => (
               <li key={a.author}>
                 <Link href={`/books/${a._id}`}>{a.author}</Link>

@@ -1,14 +1,16 @@
 import Link from "next/link";
 
-export default function Book({
+export default function UserBook({
   _id,
   title,
   author,
   genre,
   year,
-  synopsis,  
+  synopsis,
+  onDelete,
+  thisBook,
 }) {
-  
+  console.log("111111111", thisBook);
   return (
     <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -40,6 +42,21 @@ export default function Book({
             ></path>
           </svg>
         </Link>
+        <>
+          <Link
+            href={`/userPage/books/edit/${_id}`}
+            type="edit"
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Edit
+          </Link>
+          <button
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-900 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-400 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+            onClick={() => onDelete(_id)}
+          >
+            Delete
+          </button>
+        </>
       </div>
     </div>
   );

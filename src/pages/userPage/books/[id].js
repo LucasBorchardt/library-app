@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Book from "@/components/Book";
+import UserBook from "@/components/UserBook";
 
-export default function BookDetailsPage() {
+export default function UserBookDetailsPage() {
   const [book, setBook] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
@@ -24,6 +24,13 @@ export default function BookDetailsPage() {
     getBooks();
   }, [id]);
 
+  async function handleDeleteBook(_id) {
+    await fetch(`/api/books/${_id}`, {
+      method: "DELETE",
+    });
+    router.push("/");
+  }
+
   if (!book) {
     return console.log("error");
   }
@@ -31,7 +38,7 @@ export default function BookDetailsPage() {
   if (!book) return <p>No profile data</p>;
   return (
     <Layout>
-      <Book
+      <UserBook
         _id={book._id}
         thisBook={book}
         title={book.title}
@@ -39,6 +46,7 @@ export default function BookDetailsPage() {
         genre={book.genre}
         year={book.year}
         synopsis={book.synopsis}
+        onDelete={handleDeleteBook}
       />
     </Layout>
   );

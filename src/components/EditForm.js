@@ -1,7 +1,14 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function EditForm({ _id, title, author, genre, year, synopsis }) {
+export default function EditForm({
+  _id,
+  title,
+  author,
+  genre,
+  year,
+  synopsis,
+}) {
   const router = useRouter();
   const { id } = router.query;
   const [editBook, setEditBook] = useState({
@@ -16,7 +23,7 @@ export default function EditForm({ _id, title, author, genre, year, synopsis }) 
     event.preventDefault();
     const response = await fetch(`/api/books/${id}`, {
       method: "PUT",
-      body: JSON.stringify( editBook ),
+      body: JSON.stringify(editBook),
       headers: {
         "Content-Type": "application/json",
       },

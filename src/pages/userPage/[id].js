@@ -58,7 +58,7 @@ export default function UserPage() {
             >
               {books.map((a) => (
                 <li key={a.title}>
-                  <Link href={`/books/${a._id}`}>{a.title}</Link>
+                  <Link href={`/userPage/books/${a._id}`}>{a.title}</Link>
                   <br />
                 </li>
               ))}
@@ -66,7 +66,7 @@ export default function UserPage() {
           </div>
         </div>
         <Link
-          href="/create"
+          href="/userPage/books/create"
           type="create"
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
