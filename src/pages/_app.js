@@ -1,15 +1,15 @@
 import "../../src/input.css";
 import { SWRConfig } from "swr";
-import {SessionProvider} from "next-auth/react"
+import { SessionProvider } from "next-auth/react";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function App({ Component, pageProps, session }) {
   return (
     <>
-      <SessionProvider session={ session }>
+      <SessionProvider session={session}>
         <SWRConfig value={{ fetcher }}>
-          <Component { ...pageProps } />
+          <Component {...pageProps} />
         </SWRConfig>
       </SessionProvider>
     </>

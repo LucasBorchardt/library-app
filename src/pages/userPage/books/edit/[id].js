@@ -1,9 +1,9 @@
+import EditForm from "@/components/EditForm";
 import Layout from "@/components/Layout";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Book from "@/components/Book";
 
-export default function BookDetailsPage() {
+export default function EditPage() {
   const [book, setBook] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
@@ -31,7 +31,7 @@ export default function BookDetailsPage() {
   if (!book) return <p>No profile data</p>;
   return (
     <Layout>
-      <Book
+      <EditForm
         _id={book._id}
         title={book.title}
         author={book.author}

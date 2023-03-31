@@ -10,7 +10,7 @@ export default function TitlePage() {
     async function getBooks() {
       try {
         setLoading(true);
-        const booksData = await fetch("/api/books/");
+        const booksData = await fetch("/api/books");
         const books = await booksData.json();
         setBooks(books);
         setLoading(false);
@@ -32,10 +32,7 @@ export default function TitlePage() {
           </h5>
         </div>
         <div className="flow-root">
-          <ul
-            role="list"
-            className="divide-y divide-gray-200 dark:divide-gray-700"
-          >
+          <ul role="list" className="divide-y divide-gray-700 dark:text-white">
             {books.map((a) => (
               <li key={a.title}>
                 <Link href={`/books/${a._id}`}>{a.title}</Link>

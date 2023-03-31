@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Layout from "../components/Layout";
+import Layout from "@/components/Layout";
 
 export default function AuthorPage() {
   const [books, setBooks] = useState(null);
@@ -10,7 +10,7 @@ export default function AuthorPage() {
     async function getBooks() {
       try {
         setLoading(true);
-        const booksData = await fetch("/api/books/");
+        const booksData = await fetch("/api/books");
         const books = await booksData.json();
         setBooks(books);
         setLoading(false);
@@ -32,10 +32,7 @@ export default function AuthorPage() {
           </h5>
         </div>
         <div className="flow-root">
-          <ul
-            role="list"
-            className="divide-y divide-gray-200 dark:divide-gray-700"
-          >
+          <ul role="list" className="divide-y divide-gray-700 dark:text-white">
             {books.map((a) => (
               <li key={a.author}>
                 <Link href={`/books/${a._id}`}>{a.author}</Link>
