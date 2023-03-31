@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function UserBook({
   _id,
@@ -8,9 +9,9 @@ export default function UserBook({
   year,
   synopsis,
   onDelete,
-  thisBook,
-}) {
-  console.log("111111111", thisBook);
+}){
+const router = useRouter();
+const { id } = router.query;
   return (
     <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -24,7 +25,7 @@ export default function UserBook({
       </p>
       <div className="flex justify-around">
         <Link
-          href="/"
+          href={`/userPage/${id}`}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Back

@@ -28,26 +28,22 @@ export default function UserBookDetailsPage() {
     await fetch(`/api/books/${_id}`, {
       method: "DELETE",
     });
-    router.push("/");
+    router.push(`/userPage/${id}`);
   }
 
-  if (!book) {
-    return console.log("error");
-  }
   if (isLoading) return <p>Loading...</p>;
   if (!book) return <p>No profile data</p>;
   return (
     <Layout>
       <UserBook
         _id={book._id}
-        thisBook={book}
         title={book.title}
         author={book.author}
         genre={book.genre}
         year={book.year}
         synopsis={book.synopsis}
         onDelete={handleDeleteBook}
-      />
+      />      
     </Layout>
   );
 }

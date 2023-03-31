@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function EditForm({
   _id,
@@ -9,39 +9,48 @@ export default function EditForm({
   year,
   synopsis,
 }) {
+  const [book, setBook] = useState(null);
   const router = useRouter();
   const { id } = router.query;
-  const [editBook, setEditBook] = useState({
-    _id,
-    title,
-    author,
-    genre,
-    year,
-    synopsis,
-  });
+
+  useEffect(() => {
+    async function getBooks() {
+      try {
+        setLoading(true);
+        const bookData = await fetch(`/api/books/${id}`);
+        const book = await bookData.json();
+        setBook(book);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getBooks();
+  }, [id]);
+
   async function handleEdit(event) {
-    event.preventDefault();
-    const response = await fetch(`/api/books/${id}`, {
+    event.preventDefault();    
+    const response = await fetch(`/api/books/${_id}`, {
       method: "PUT",
-      body: JSON.stringify(editBook),
+      body: JSON.stringify(book),
       headers: {
         "Content-Type": "application/json",
       },
     });
     if (response.ok) {
       await response.json();
-      router.push(`/books/${_id}`);
+      router.push("/");
     } else {
       console.error(`Error: ${response.status}`);
     }
   }
+
   return (
     <form onSubmit={handleEdit}>
       <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
         <p className="text-white">Edit your Book</p>
         <input
-          onChange={(e) => setEditBook({ editBook, title: e.target.value })}
-          value={editBook.title}
+          onChange={(e) => setBook({ book, title: e.target.value })}
+          defaultValue={title}
           type="text"
           name="title"
           id="title"
@@ -50,8 +59,8 @@ export default function EditForm({
           placeholder="Title:"
         />
         <input
-          onChange={(e) => setEditBook({ editBook, author: e.target.value })}
-          value={editBook.author}
+          onChange={(e) => setBook({ book, author: e.target.value })}
+          defaultValue={author}
           type="text"
           name="author"
           id="author"
@@ -60,8 +69,8 @@ export default function EditForm({
           placeholder="Author:"
         />
         <input
-          onChange={(e) => setEditBook({ editBook, genre: e.target.value })}
-          value={editBook.genre}
+          onChange={(e) => setBook({ book, genre: e.target.value })}
+          defaultValue={genre}
           type="text"
           name="genre"
           id="genre"
@@ -70,8 +79,8 @@ export default function EditForm({
           placeholder="Genre:"
         />
         <input
-          onChange={(e) => setEditBook({ editBook, year: e.target.value })}
-          value={editBook.year}
+          onChange={(e) => setBook({ book, year: e.target.value })}
+          defaultValue={year}
           type="number"
           name="year"
           id="year"
@@ -80,8 +89,8 @@ export default function EditForm({
           placeholder="Year:"
         />
         <textarea
-          onChange={(e) => setEditBook({ editBook, synopsis: e.target.value })}
-          value={editBook.synopsis}
+          onChange={(e) => setBook({ book, synopsis: e.target.value })}
+          defaultValue={synopsis}
           id="synopsis"
           name="synopsis"
           rows="3"

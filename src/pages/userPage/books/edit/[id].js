@@ -1,10 +1,44 @@
 import EditForm from "@/components/EditForm";
 import Layout from "@/components/Layout";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-export default function CreatePage() {
+export default function EditPage() {
+  const [book, setBook] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    async function getBooks() {
+      try {
+        setLoading(true);
+        const bookData = await fetch(`/api/books/${id}`);
+        const book = await bookData.json();
+        setBook(book);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getBooks();
+  }, [id]);
+
+  if (!book) {
+    return console.log("error");
+  }
+  if (isLoading) return <p>Loading...</p>;
+  if (!book) return <p>No profile data</p>;
   return (
     <Layout>
-      <EditForm />
+      <EditForm
+        _id={book._id}
+        title={book.title}
+        author={book.author}
+        genre={book.genre}
+        year={book.year}
+        synopsis={book.synopsis}
+      />
     </Layout>
   );
 }

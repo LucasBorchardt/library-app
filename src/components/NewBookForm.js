@@ -27,9 +27,9 @@ export default function NewBookForm() {
     if (Response.ok) {
       const book = await response.json();
       books.mutate();
-      router.push(`/books/${book._id}`);
+      // router.push("/");
     } else {
-      console.log(`Error: ${response.status}`);
+      console.log("Error");
     }
   }
   return (
@@ -77,15 +77,14 @@ export default function NewBookForm() {
         />
         <div className="inline-flex w-full justify-between gap-x-1.5 rounded-md sm:py-2">
           <Link
-            href={`/userPage/${session.user.id}`}
+            href="/"
             type="back"
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Back
           </Link>
-
           <button
-          href={`/userPage/${session.user.id}`}
+            href="/"
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="submit"
           >
